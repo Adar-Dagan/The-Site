@@ -9,6 +9,8 @@ jobs:
     uses: ./.github/workflows/build.yml
 
   run tests:
+    runs-on: windows-latest
+
     - uses: actions/download-artifact@v2
       with:
         name: app-all
