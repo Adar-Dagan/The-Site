@@ -1,0 +1,30 @@
+name: PR Build
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    uses: build.yml@build
+
+  run tests:
+    - uses: actions/download-artifact@v2
+      with:
+        name: app-all
+        path: /
+
+    - name: Run tests
+      run: ng test --no-watch --karma-config karma.workflow.conf.js --code-coverage
+
+    - name: Publish Unit Test Results
+      uses: EnricoMi/publish-unit-test-result-action/composite@v1
+      with:
+        files: "testresults/junit/unit-test-result.xml"
+
+    - name: Publish code coverage
+      uses: 5monkeys/cobertura-action@master
+      with:
+        path: coverage\test-project\cobertura-coverage.xml
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        minimum_coverage: 90
