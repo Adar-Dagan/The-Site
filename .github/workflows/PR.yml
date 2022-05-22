@@ -5,11 +5,13 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  Build:
     uses: ./.github/workflows/Build.yml
 
-  run-tests:
+  Run-Tests:
+    name: Run Tests and Coverage
     runs-on: windows-latest
+    needs: Build
 
     steps:
       - uses: actions/download-artifact@v2
