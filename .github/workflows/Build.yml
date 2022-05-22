@@ -27,11 +27,11 @@ jobs:
       run: ng build
 
     - uses: actions/upload-artifact@v2
-        with:
-          name: app-all
-          path: /
+      with:
+        name: app-all
+        path: /
 
     - uses: actions/upload-artifact@v2
-        with:
-          name: app-artifacts
-          path: dist/test-project
+      with:
+        name: app-artifacts
+        path: dist/test-project
