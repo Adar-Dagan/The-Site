@@ -27,8 +27,3 @@ jobs:
           # api_location: ${{ env.API_LOCATION }}
           skip_app_build: true
           ###### End of Repository/Build Configurations ######
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: app-artifacts
-          path: app
