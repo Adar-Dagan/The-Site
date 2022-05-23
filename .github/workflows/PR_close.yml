@@ -9,3 +9,4 @@ jobs:
   deploy-to-stabilize:
     uses: ./.github/workflows/deploy.yml
       deployment_environment: "stabilization"
+      source_workflow: "PR.yml"

@@ -6,6 +6,9 @@ on:
         default: 'Production'
         required: false
         type: string
+      source_workflow:
+        required: true
+        type: string
 
 jobs:
   Deploy:
@@ -14,8 +17,9 @@ jobs:
       - uses: dawidd6/action-download-artifact@v2
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
-          workflow: PR.yml
+          workflow: ${{ inputs.source_workflow }}
           workflow_conclusion: success
+          path: "app"
 
       - name: Build And Deploy
         id: builddeploy
@@ -31,3 +35,8 @@ jobs:
           # api_location: ${{ env.API_LOCATION }}
           skip_app_build: true
           ###### End of Repository/Build Configurations ######
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: app-artifacts
+          path: app

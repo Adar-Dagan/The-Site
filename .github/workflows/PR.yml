@@ -48,4 +48,4 @@ jobs:
       if: success()
       with:
         name: app-artifacts
-        path: dist/test-project
+        path: dist/the-site
