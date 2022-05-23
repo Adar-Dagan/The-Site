@@ -19,7 +19,6 @@ jobs:
           github_token: ${{secrets.GITHUB_TOKEN}}
           workflow: ${{ inputs.source_workflow }}
           workflow_conclusion: success
-          path: "app"
 
       - name: Build And Deploy
         id: builddeploy
@@ -31,7 +30,7 @@ jobs:
           deployment_environment: ${{ inputs.deployment_environment }}
           ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "app"
+          app_location: "app-artifacts"
           # api_location: ${{ env.API_LOCATION }}
           skip_app_build: true
           ###### End of Repository/Build Configurations ######
