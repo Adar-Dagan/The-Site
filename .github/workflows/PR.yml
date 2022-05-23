@@ -5,31 +5,44 @@ on:
     branches: [ main ]
 
 jobs:
-  Build:
-    uses: ./.github/workflows/Build.yml
-
-  Run-Tests:
-    name: Run Tests and Coverage
+  Build and Test:
     runs-on: windows-latest
-    needs: Build
 
     steps:
-      - uses: actions/download-artifact@v2
-        with:
-          name: app-all
-          path: ./
+    - uses: actions/checkout@v3
 
-      - name: Run tests
-        run: ng test --no-watch --karma-config karma.workflow.conf.js --code-coverage
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
 
-      - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action/composite@v1
-        with:
-          files: "testresults/junit/unit-test-result.xml"
+    - name: Install angular cli
+      run: npm install -g @angular/cli
 
-      - name: Publish code coverage
-        uses: 5monkeys/cobertura-action@master
-        with:
-          path: coverage\test-project\cobertura-coverage.xml
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          minimum_coverage: 90
+    - name: npm install
+      run: npm install
+
+    - name: Build
+      run: ng build
+
+    - name: Run tests
+      run: ng test --no-watch --karma-config karma.workflow.conf.js --code-coverage
+
+    - name: Publish Unit Test Results
+      uses: EnricoMi/publish-unit-test-result-action/composite@v1
+      with:
+        files: "testresults/junit/unit-test-result.xml"
+
+    - name: Publish code coverage
+      uses: 5monkeys/cobertura-action@master
+      with:
+        path: coverage\test-project\cobertura-coverage.xml
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        minimum_coverage: 90
+
+    - uses: actions/upload-artifact@v2
+      if: success()
+      with:
+        name: app-artifacts
+        path: dist/test-project
