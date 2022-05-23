@@ -7,5 +7,6 @@ on:
 jobs:
   deploy:
     uses: ./.github/workflows/deploy.yml
+    secrets: inherit
     with:
       source_workflow: "PR_close.yml"
