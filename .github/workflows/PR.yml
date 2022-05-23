@@ -35,6 +35,7 @@ jobs:
       if: always()
       with:
         files: "testresults/junit/unit-test-result.xml"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Publish code coverage
       uses: 5monkeys/cobertura-action@master
