@@ -1,0 +1,11 @@
+name: Deploy web app to Azure Static Web Apps stabilization environment
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy-to-stabilize:
+    uses: ./.github/workflows/deploy.yml
+      deployment_environment: "stabilization"
