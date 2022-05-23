@@ -32,8 +32,8 @@ jobs:
 
     - name: Publish Unit Test Results
       uses: EnricoMi/publish-unit-test-result-action/composite@v1
+      if: always()
       with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
         files: "testresults/junit/unit-test-result.xml"
 
     - name: Publish code coverage
