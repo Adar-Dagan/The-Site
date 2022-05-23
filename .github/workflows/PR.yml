@@ -8,6 +8,7 @@ jobs:
   build-and-test:
     name: Build and Test
     runs-on: windows-latest
+    permissions: write-all
 
     steps:
     - uses: actions/checkout@v3
@@ -35,7 +36,6 @@ jobs:
       if: always()
       with:
         files: "testresults/junit/unit-test-result.xml"
-        github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Publish code coverage
       uses: 5monkeys/cobertura-action@master
