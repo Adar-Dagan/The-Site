@@ -8,6 +8,6 @@ on:
 jobs:
   deploy-to-stabilize:
     uses: ./.github/workflows/deploy.yml
-      with:
-        deployment_environment: "stabilization"
-        source_workflow: "PR.yml"
+    with:
+      deployment_environment: "stabilization"
+      source_workflow: "PR.yml"
