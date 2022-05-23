@@ -3,7 +3,7 @@ name: Deploy web app to Azure Static Web Apps stabilization environment
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy-to-stabilize:
