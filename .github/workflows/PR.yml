@@ -53,10 +53,7 @@ jobs:
         minimum_coverage: 90
 
     - name: Move static apps config file
-      uses: canastro/copy-file-action@master
-      with:
-        source: staticwebapp.config.json
-        target: dist/the-site/staticwebapp.config.json
+      run: cp staticwebapp.config.json dist/the-site/staticwebapp.config.json
 
     - uses: actions/upload-artifact@v2
       if: success()
