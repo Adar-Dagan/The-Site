@@ -1,0 +1,14 @@
+<app-header></app-header>
+
+<mat-sidenav-container>
+    <mat-sidenav opened mode="side">
+        <mat-selection-list [multiple]="false">
+            <mat-list-option routerLink="/home"> דף בית </mat-list-option>
+            <mat-list-option routerLink="/catalogue"> קטלוג </mat-list-option>
+
+        </mat-selection-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
