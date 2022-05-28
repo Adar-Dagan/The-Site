@@ -64,16 +64,13 @@ jobs:
   deploy-pr:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
-    if: github.event.action != 'closed'
+    needs: build-and-test
 
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/download-artifact@v3
         with:
-          node-version: 16
-          cache: 'npm'
+          name: app-artifacts
+          path: app-artifacts
 
       - name: Build And Deploy
         id: builddeploy
@@ -84,9 +81,9 @@ jobs:
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: /
+          app_location: app-artifacts
           ## api_location: ${{ env.API_LOCATION }}
-          output_location: 'dist/the-site/'
+          skip_app_build: true
           ###### End of Repository/Build Configurations ######
 
   close-pr-deployment:
