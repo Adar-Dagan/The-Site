@@ -53,7 +53,7 @@ jobs:
       run: cp staticwebapp.config.json dist/the-site/staticwebapp.config.json
 
     - name: Upload frontend artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       if: success()
       with:
         name: app-artifacts

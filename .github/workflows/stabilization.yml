@@ -30,7 +30,7 @@ jobs:
           skip_app_build: true
           ###### End of Repository/Build Configurations ######
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: app-artifacts
           path: app-artifacts
