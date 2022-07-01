@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-catalogue',
+  selector: 'ct-catalogue',
   templateUrl: './catalogue.component.html',
   styleUrls: ['./catalogue.component.less']
 })
