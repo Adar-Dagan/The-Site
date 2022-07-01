@@ -1,9 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MaterialModule } from 'src/modules/material.module';
+import { CoreModule } from '@core';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -13,12 +14,13 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        MaterialModule,
-        NoopAnimationsModule
+        NoopAnimationsModule,
+        CoreModule,
+        MatSidenavModule,
+        MatListModule
       ],
       declarations: [
-        AppComponent,
-        HeaderComponent
+        AppComponent
       ],
     }).compileComponents();
   });
