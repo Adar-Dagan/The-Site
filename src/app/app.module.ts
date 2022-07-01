@@ -7,9 +7,10 @@ import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoreModule } from '@core/core.module';
-import { SharedModule } from '@shared/shared.module';
+import { CoreModule } from '@core';
+import { SharedModule } from '@shared';
 import { HomeModule } from './home/home.module';
+import { CatalogueModule } from './catalogue/catalogue.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HomeModule } from './home/home.module';
     CoreModule,
     SharedModule,
     HomeModule,
+    CatalogueModule,
     MatSidenavModule,
     MatListModule
   ],

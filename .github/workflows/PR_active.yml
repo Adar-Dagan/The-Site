@@ -25,7 +25,7 @@ jobs:
         cache: 'npm'
 
     - name: Install angular cli
-      run: npm install -g @angular/cli
+      run: npm install --location=global @angular/cli
 
     - name: npm install
       run: npm install
