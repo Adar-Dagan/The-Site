@@ -37,7 +37,7 @@ jobs:
       run: ng test --no-watch --karma-config karma.workflow.conf.js --code-coverage
 
     - name: Publish unit test results
-      uses: EnricoMi/publish-unit-test-result-action/composite@v1
+      uses: EnricoMi/publish-unit-test-result-action/composite@v2
       if: always()
       with:
         files: "testresults/junit/unit-test-result.xml"
